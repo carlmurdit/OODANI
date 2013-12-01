@@ -1,0 +1,11 @@
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\bin\Release\DANI Server.exe.config
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\bin\Release\DANI Server.exe
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\bin\Release\DANI Server.pdb
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\obj\Release\DANI Server.csprojResolveAssemblyReference.cache
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\obj\Release\DANI_Server.frmMain.resources
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\obj\Release\DANI_Server.frmImport.resources
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\obj\Release\DANI_Server.frmSocketServer.resources
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\obj\Release\DANI_Server.Properties.Resources.resources
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\obj\Release\DANI Server.csproj.GenerateResource.Cache
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\obj\Release\DANI Server.exe
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI\DANI\DANI Server\obj\Release\DANI Server.pdb

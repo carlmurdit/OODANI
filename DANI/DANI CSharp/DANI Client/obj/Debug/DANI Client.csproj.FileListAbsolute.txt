@@ -1,0 +1,6 @@
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Client\bin\Debug\DANI Client.exe.config
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Client\bin\Debug\DANI Client.exe
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Client\bin\Debug\DANI Client.pdb
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Client\obj\Debug\DANI Client.csprojResolveAssemblyReference.cache
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Client\obj\Debug\DANI Client.exe
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Client\obj\Debug\DANI Client.pdb

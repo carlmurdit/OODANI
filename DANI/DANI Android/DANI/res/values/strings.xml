@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DANI</string>
+    <string name="action_settings">Settings</string>
+	<string name="intro">Press the button to chat with DANI</string>
+    <string name="speech">Speak now!</string>
+    <string name="word_intro"> </string>
+
+</resources>
