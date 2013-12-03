@@ -96,9 +96,8 @@ namespace DANI_Server.File_Parsing
                 return "";
             }
 
-            if (Line.StartsWith("-- 3RD"))
+            if (Line.StartsWith("-- 3RD")) //just a line that we don't want in Fear & Loathing
                 return "";
-            //just a line that we don't want in Fear & Loathing
 
             //If it starts with a bracket, it's a direction
             if (Regex.IsMatch(Line, "^\\("))
@@ -115,6 +114,9 @@ namespace DANI_Server.File_Parsing
             Line = Regex.Replace(Line, "\"", "");
             //remove quotes.
             Line = Regex.Replace(Line, ",", "");
+            //Fix Dr. Evil
+            Line = Line.Replace("Dr.", "Dr ");
+            Line = Line.Replace("Mr.", "Mr ");
 
             return Line;
 

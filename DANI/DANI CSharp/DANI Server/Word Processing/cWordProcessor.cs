@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualBasic;
 using System.Text.RegularExpressions;
 
 namespace DANI_Server.Word_Processing
@@ -11,6 +10,7 @@ namespace DANI_Server.Word_Processing
         public event AlertEventHandler Alert;
         public delegate void AlertEventHandler(string msg, eProcessType ProcessType);
 	    //Dictionary with words as keys. Value is info on how the word is used.
+        //having the Word string as a class field would be more OO but then we wouldn't have the fast search of a dictionary.
         private Dictionary<string, cWordUsageStats> WordUsages;
 	    //used to chose words when there are several candidates
         private static Random Rand;
@@ -163,7 +163,7 @@ namespace DANI_Server.Word_Processing
             //last index to make the top half
             for (int i = 0; i <= wordscores.Count - 1; i++)
             {
-                WriteLine(string.Format("\t\t'{0}' scored {1} based on UseCount, Candidate={2}", wordscores[i].Item2, wordscores[i].Item1, i <= MaxIndex), eProcessType.Responding);
+                WriteLine(string.Format("\t\t'{0}' scored {1} based on Word UseCount, Candidate={2}", wordscores[i].Item2, wordscores[i].Item1, i <= MaxIndex), eProcessType.Responding);
             }
             string ChosenWord = wordscores[Rand.Next(0, MaxIndex + 1)].Item2;
             WriteLine(string.Format("\tChose '{0}' as seedword.", ChosenWord), eProcessType.Responding);
@@ -180,9 +180,6 @@ namespace DANI_Server.Word_Processing
 
             List<Tuple<int, string>> NeighbouringWords = new List<Tuple<int, string>>();
             string BaseWord = SeedWord; //the word which will be the base to find each previous/next word
-            //Score and index of link found to have the highest start/end score
-            int HighScore = -1;
-            int HighScoreIndex = -1;
             for (int i = 0; i <= MaxWords - 1; i++)
             {
                 // (Start or End Score, Word)
@@ -194,19 +191,42 @@ namespace DANI_Server.Word_Processing
                 else
                 {
                     NeighbouringWords.Add(NeighbourWord);
-                    if (NeighbourWord.Item1 >= HighScore)
-                    {
-                        HighScore = NeighbourWord.Item1;
-                        HighScoreIndex = i;
-                    }
                 }
                 BaseWord = NeighbourWord.Item2; //next loop will pass this word to get the next link
             }
 
-            if (HighScore > -1)
+            //return if we haven't found words to precede the seed word.
+            if (NeighbouringWords.Count() == 0) return "";
+
+            // Display phrase before choosing start/end point:
+            string allWords = "";
+            foreach (Tuple<int, string> kvp in NeighbouringWords)
+            {
+                //concatenate backwards or forwards
+                allWords = GoBackwards ? string.Concat(kvp.Item2, " ", allWords) : string.Concat(allWords, " ", kvp.Item2);
+            }
+            allWords = allWords.Trim();
+            WriteLine(String.Format("\tChoosing best word to {0} sentence from words '{1}' based on Link StartEndCount...", GoBackwards ? "start" : "end", allWords), eProcessType.Responding);
+
+            //Display all link words with their Link StartEndCound Score 
+            //Store the score and index of the link with the highest start/end score
+            int HighScore = 0;
+            int HighScoreIndex = -1;
+            for (int i = 0; i <= NeighbouringWords.Count - 1; i++)
+            {
+                Tuple<int, string> NeighbouringWord = NeighbouringWords[i];
+                WriteLine(String.Format("\t\t'{0}' scored {1} based on Link StartEndCound", NeighbouringWord.Item2, NeighbouringWord.Item1), eProcessType.Responding);
+                if (NeighbouringWord.Item1 >= HighScore)
+                {
+                    HighScore = NeighbouringWord.Item1;
+                    HighScoreIndex = i;
+                }
+            }
+
+            if (HighScore > 0)
             {
                 //One or more links has started/ended a sentence. We have the index of the last link with the highest start/end score.
-                WriteLine(string.Format("One of the best links to {0} a sentence is '{1}', it scored {2} (based on Link StartEndCount).",
+                WriteLine(string.Format("\tOne of the best links to {0} a sentence is '{1}', it scored {2} (based on Link StartEndCount).",
                     GoBackwards ? "start" : "end",
                     NeighbouringWords[HighScoreIndex].Item2,
                     NeighbouringWords[HighScoreIndex].Item1), eProcessType.Responding);
@@ -214,8 +234,8 @@ namespace DANI_Server.Word_Processing
             else
             //If no starting links found, examine the total amount of times each word started/ended a sentence
             {
-                WriteLine(string.Format("None of these words {0} sentences when in these links, so counting when linked to any word...", 
-                    (GoBackwards ? "started" : "ended")), eProcessType.Responding);
+                WriteLine("\t\tNo word scored more than zero.", eProcessType.Responding);
+                WriteLine(String.Format("\tChoosing best word to {0} sentence from words '{1}' based on Word StartEndCount...", GoBackwards ? "start" : "end", allWords), eProcessType.Responding);
                 for (int i = 0; i <= NeighbouringWords.Count - 1; i++)
                 {
                     string Word = NeighbouringWords[i].Item2;
@@ -226,10 +246,10 @@ namespace DANI_Server.Word_Processing
                         HighScore = Score;
                         HighScoreIndex = i;
                     }
-                    WriteLine(string.Format("{0}{0}'{1}' scored {2} (based on Word Start/EndCount)", Constants.vbTab, Word, Score), eProcessType.Responding);
+                    WriteLine(string.Format("\t\t'{0}' scored {1} based on Word Start/EndCount", Word, Score), eProcessType.Responding);
                 }
 
-                if (HighScore > -1)
+                if (HighScore > 0)
                 {
                     //One or more links has started/ended a sentence. We have the index of the last link with the highest start/end score.
                     WriteLine(string.Format("One of the best links to {0} a sentence is '{1}', it scored {2} (based on Word StartEndCount).",
@@ -239,7 +259,8 @@ namespace DANI_Server.Word_Processing
                 }
                 else
                 {
-                    WriteLine(string.Format("None of these words {0} sentences when in any links, so including them all...",
+                    WriteLine("\t\tNo word scored more than zero.", eProcessType.Responding);
+                    WriteLine(string.Format("\tNo {0} word found, so including them all.",
                        (GoBackwards ? "started" : "ended")), eProcessType.Responding);
                     HighScoreIndex = NeighbouringWords.Count - 1;
                 }
@@ -253,14 +274,8 @@ namespace DANI_Server.Word_Processing
             string retVal = "";
             foreach (Tuple<int, string> kvp in NeighbouringWords)
             {
-                if (GoBackwards)
-                {
-                    retVal = string.Concat(kvp.Item2, " ", retVal);
-                }
-                else
-                {
-                    retVal = string.Concat(retVal, " ", kvp.Item2);
-                }
+                //concatenate backwards or forwards
+                retVal = GoBackwards ? string.Concat(kvp.Item2, " ", retVal) : string.Concat(retVal, " ", kvp.Item2);
             }
 
             return retVal.Trim();
@@ -273,7 +288,7 @@ namespace DANI_Server.Word_Processing
         private Tuple<int, string> GetNeighbouringWord(string BaseWord, bool Backwards)
         {
 
-            WriteLine(string.Format(Constants.vbTab + "Choosing {0} word for '{1}'...", (Backwards ? "preceding" : "following"), BaseWord), eProcessType.Responding);
+            WriteLine(string.Format("\tChoosing {0} word for '{1}'...", (Backwards ? "preceding" : "following"), BaseWord), eProcessType.Responding);
 
             //Create list of every word that has been known to precede BaseWord. 
             //Apply score (based on how many times the two words have been used together).
@@ -295,9 +310,10 @@ namespace DANI_Server.Word_Processing
             }
             if (wordscores.Count == 0)
             {
-                WriteLine(Constants.vbTab + Constants.vbTab + "No links known.", eProcessType.Responding);
+                //no available words linked to this word in the direction we want
+                WriteLine("\t\tNo links.", eProcessType.Responding);
+                WriteLine(string.Format("\tNo {0} word available.", (Backwards ? "preceding" : "following")), eProcessType.Responding);
                 return null;
-                //nothing linked to this word in the direction we want
             }
 
             //Sort, then choose a random word from the half that was used most
@@ -307,7 +323,7 @@ namespace DANI_Server.Word_Processing
             //last index to make the top half
             for (int i = 0; i <= wordscores.Count - 1; i++)
             {
-                WriteLine(string.Format("{0}{0}'{1}', Score (based on Link UseCount)={2}, Candidate={3}", Constants.vbTab, wordscores[i].Item2, wordscores[i].Item1, i <= MaxIndex), eProcessType.Responding);
+                WriteLine(string.Format("\t\t'{0}' scored {1} (based on Link UseCount), Candidate={2}", wordscores[i].Item2.Key, wordscores[i].Item1, i <= MaxIndex), eProcessType.Responding);
             }
 
             //Choose a random word from the half that was linked most
@@ -315,7 +331,9 @@ namespace DANI_Server.Word_Processing
             Tuple<int, KeyValuePair<string, cLinkUsageStats>> ChosenWord = wordscores[ChosenIndex];
 
             //Return the linked word with the count of times it started/ended a sentence linked to the BaseWord
-            WriteLine(string.Format(Constants.vbTab + "Chose '{0}' as {1} word for '{2}', StartEndCount={3}", ChosenWord.Item2.Key, (Backwards ? "preceding" : "following"), BaseWord, ChosenWord.Item2.Value.StartEndCount), eProcessType.Responding);
+            WriteLine(string.Format("\tChose '{0}' as {1} word for '{2}'.", 
+                ChosenWord.Item2.Key, (Backwards ? "preceding" : "following"), BaseWord), eProcessType.Responding);
+            //return the chosen word with its Link StartEndCount score that we'll need to find a sentence start/stop
             return new Tuple<int, string>(ChosenWord.Item2.Value.StartEndCount, ChosenWord.Item2.Key);
 
         }

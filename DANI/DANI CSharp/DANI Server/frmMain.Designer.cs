@@ -39,23 +39,23 @@
             this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStartServer = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlBottom = new System.Windows.Forms.Panel();
-            this.btnStopImport = new System.Windows.Forms.Button();
+            this.pnlStatus = new System.Windows.Forms.Panel();
             this.lblServerStatus = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ProgressBarImport = new System.Windows.Forms.ProgressBar();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.lblKnownWords = new System.Windows.Forms.Label();
             this.pnlImport = new System.Windows.Forms.Panel();
-            this.pnlStatus = new System.Windows.Forms.Panel();
+            this.ProgressBarImport = new System.Windows.Forms.ProgressBar();
+            this.btnStopImport = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbImport = new System.Windows.Forms.ToolStripButton();
             this.tsbErase = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.pnlBottom.SuspendLayout();
+            this.pnlStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlImport.SuspendLayout();
-            this.pnlStatus.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +66,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 49);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(656, 46);
+            this.panel1.Size = new System.Drawing.Size(742, 46);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -84,7 +84,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInput.Location = new System.Drawing.Point(128, 16);
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(459, 20);
+            this.txtInput.Size = new System.Drawing.Size(545, 20);
             this.txtInput.TabIndex = 0;
             this.txtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInput_KeyDown_1);
             // 
@@ -94,7 +94,7 @@
             this.richText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richText.Location = new System.Drawing.Point(0, 95);
             this.richText.Name = "richText";
-            this.richText.Size = new System.Drawing.Size(656, 218);
+            this.richText.Size = new System.Drawing.Size(742, 336);
             this.richText.TabIndex = 1;
             this.richText.Text = "";
             // 
@@ -104,7 +104,7 @@
             this.mnuFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(656, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(742, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -136,21 +136,20 @@
             this.pnlBottom.Controls.Add(this.pnlStatus);
             this.pnlBottom.Controls.Add(this.pnlImport);
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 313);
+            this.pnlBottom.Location = new System.Drawing.Point(0, 431);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(656, 21);
+            this.pnlBottom.Size = new System.Drawing.Size(742, 21);
             this.pnlBottom.TabIndex = 3;
             // 
-            // btnStopImport
+            // pnlStatus
             // 
-            this.btnStopImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStopImport.Location = new System.Drawing.Point(594, -1);
-            this.btnStopImport.Name = "btnStopImport";
-            this.btnStopImport.Size = new System.Drawing.Size(60, 20);
-            this.btnStopImport.TabIndex = 3;
-            this.btnStopImport.Text = "Stop";
-            this.btnStopImport.UseVisualStyleBackColor = true;
-            this.btnStopImport.Click += new System.EventHandler(this.btnStop_Click);
+            this.pnlStatus.Controls.Add(this.lblServerStatus);
+            this.pnlStatus.Controls.Add(this.pictureBox1);
+            this.pnlStatus.Controls.Add(this.lblKnownWords);
+            this.pnlStatus.Location = new System.Drawing.Point(0, 0);
+            this.pnlStatus.Name = "pnlStatus";
+            this.pnlStatus.Size = new System.Drawing.Size(656, 20);
+            this.pnlStatus.TabIndex = 6;
             // 
             // lblServerStatus
             // 
@@ -169,22 +168,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.mnuStartServer_Click);
-            // 
-            // ProgressBarImport
-            // 
-            this.ProgressBarImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressBarImport.Location = new System.Drawing.Point(0, 2);
-            this.ProgressBarImport.Name = "ProgressBarImport";
-            this.ProgressBarImport.Size = new System.Drawing.Size(595, 16);
-            this.ProgressBarImport.TabIndex = 2;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Start.ico");
-            this.imageList1.Images.SetKeyName(1, "Stop.ico");
             // 
             // lblKnownWords
             // 
@@ -205,15 +188,32 @@
             this.pnlImport.Size = new System.Drawing.Size(656, 20);
             this.pnlImport.TabIndex = 5;
             // 
-            // pnlStatus
+            // ProgressBarImport
             // 
-            this.pnlStatus.Controls.Add(this.lblServerStatus);
-            this.pnlStatus.Controls.Add(this.pictureBox1);
-            this.pnlStatus.Controls.Add(this.lblKnownWords);
-            this.pnlStatus.Location = new System.Drawing.Point(0, 0);
-            this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Size = new System.Drawing.Size(656, 20);
-            this.pnlStatus.TabIndex = 6;
+            this.ProgressBarImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProgressBarImport.Location = new System.Drawing.Point(0, 2);
+            this.ProgressBarImport.Name = "ProgressBarImport";
+            this.ProgressBarImport.Size = new System.Drawing.Size(595, 16);
+            this.ProgressBarImport.TabIndex = 2;
+            // 
+            // btnStopImport
+            // 
+            this.btnStopImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStopImport.Location = new System.Drawing.Point(594, -1);
+            this.btnStopImport.Name = "btnStopImport";
+            this.btnStopImport.Size = new System.Drawing.Size(60, 20);
+            this.btnStopImport.TabIndex = 3;
+            this.btnStopImport.Text = "Stop";
+            this.btnStopImport.UseVisualStyleBackColor = true;
+            this.btnStopImport.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Start.ico");
+            this.imageList1.Images.SetKeyName(1, "Stop.ico");
             // 
             // toolStrip1
             // 
@@ -222,7 +222,7 @@
             this.tsbErase});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(656, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(742, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -250,7 +250,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 334);
+            this.ClientSize = new System.Drawing.Size(742, 452);
             this.Controls.Add(this.richText);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlBottom);
@@ -266,10 +266,10 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlBottom.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnlImport.ResumeLayout(false);
             this.pnlStatus.ResumeLayout(false);
             this.pnlStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlImport.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

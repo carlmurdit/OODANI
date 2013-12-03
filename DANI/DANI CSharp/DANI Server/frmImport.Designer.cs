@@ -38,6 +38,7 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.txtFileName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.TableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -111,7 +112,7 @@
             this.NumericUpDown1.Size = new System.Drawing.Size(77, 20);
             this.NumericUpDown1.TabIndex = 11;
             this.NumericUpDown1.Value = new decimal(new int[] {
-            25,
+            80,
             0,
             0,
             0});
@@ -155,6 +156,16 @@
             this.txtFileName.Size = new System.Drawing.Size(332, 20);
             this.txtFileName.TabIndex = 7;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(122, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(272, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Hint: Try a script from the folder ...\\DANI CSharp\\Scripts";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // frmImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +176,7 @@
             this.Controls.Add(this.NumericUpDown1);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.Label2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.TableLayoutPanel1);
@@ -190,5 +202,6 @@
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.TextBox txtFileName;
+        internal System.Windows.Forms.Label label3;
     }
 }

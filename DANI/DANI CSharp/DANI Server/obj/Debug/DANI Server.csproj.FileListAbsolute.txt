@@ -20,3 +20,14 @@ C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Server\obj\Debug\DANI
 C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Server\obj\Debug\DANI_Server.frmSocketServer.resources
 C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Server\obj\Debug\DANI_Server.Properties.Resources.resources
 C:\Users\Carl\My Cubby\DIT\OO\Assessments\DANI CSharp\DANI Server\obj\Debug\DANI Server.csproj.GenerateResource.Cache
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\bin\Debug\DANI Server.exe.config
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\obj\Debug\DANI Server.exe
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\obj\Debug\DANI Server.pdb
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\bin\Debug\DANI Server.exe
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\bin\Debug\DANI Server.pdb
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\obj\Debug\DANI Server.csprojResolveAssemblyReference.cache
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\obj\Debug\DANI_Server.frmMain.resources
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\obj\Debug\DANI_Server.frmImport.resources
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\obj\Debug\DANI_Server.frmSocketServer.resources
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\obj\Debug\DANI_Server.Properties.Resources.resources
+C:\Users\Carl\My Cubby\DIT\OO\Assessments\Repo\DANI\DANI CSharp\DANI Server\obj\Debug\DANI Server.csproj.GenerateResource.Cache
